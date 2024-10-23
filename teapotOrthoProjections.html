@@ -23,6 +23,8 @@
 
             // Creating main function..
             void main() {
+                // Ortho Projection * Camera Transform * World_to_NDC * P
+                // Do the above before the orthographic normalization
                 // Setting position..
                 gl_Position = M_comp * vec4(vPosition, 1.0);
 
