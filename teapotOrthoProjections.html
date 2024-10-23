@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Teapot Orthographic Projections</title>
+        
+        <script type="text/javascript" src="./common_files/utils.js"></script>
+        <script type="text/javascript" src="./common_files/mat_vec.js"></script>
+        <script type="text/javascript" src="./common_files/xform2.js"></script>
+        <script type="text/javascript" src="./common_files/initShaders.js"></script>
+        <script type="text/javascript" src="./teapot.js"></script>
+
+        <script id="vertex-shader" type="x-shader/x-vertex">
+            // Declaring shader attributes..
+            attribute vec3 vPosition;
+            attribute vec3 vColor;
+            
+            // Declaring color variable..
+            varying vec4 color;
+
+            // Declaring composed matrix variable..
+            uniform mat4 M_comp;
+
+            // Creating main function..
+            void main() {
+                // Setting position..
+                gl_Position = M_comp * vec4(vPosition, 1.0);
+
+                // Setting color for viewing by fragment shader..
+                color = vec4(vColor, 1.0);
+            }
+        </script>
+
+        <script id="fragment-shader" type="x-shader/x-fragment">
+            // Declaring precisions..
+            precision mediump float;
+            
+            // Declaring color variable..
+            varying vec4 color;
+
+            // Creating main function..
+            void main() {
+                gl_FragColor = color;
+            }
+        </script>
+    </head>
+    <body>
+        <div style="float:left">
+            <canvas id="gl-canvas" width="512" height="512"></canvas>
+        </div>
+    </body>
+</html>
