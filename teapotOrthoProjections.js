@@ -129,16 +129,45 @@ function findMinMax(dim) {
     return [min, max];
 }
 
+// Creating 3D to 2D projection transform function..
+function proj4x4() {
+    // Initializing 4x4 matrix..
+    let proj = mat4();
+
+    // Changing z coordinate to 0..
+    proj[2][2] = 0.0;
+
+    // Returning projection matrix..
+    return proj;
+}
+
+// Creating normalizing transform function..
+function normalize4x4(left, right, bottom, top, near, far) {
+    // Initializing 4x4 matrix..
+    let normalize = mat4();
+
+    // Returning normalizing matrix..
+    return normalize;
+}
+
 // Creating renderring function..
 function render() {
     // Renderring background color..
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
     /* Test section for renderring teapot properly*/
+    /*
     // Renderring teapot..
     M_comp = scale4x4(1/150, 1/150, 1/150);
     gl.uniformMatrix4fv(M_comp_loc, false, flatten(M_comp));
     gl.drawElements(gl.TRIANGLES, teapot_vertices.length, gl.UNSIGNED_SHORT, 0);
+    */
+
+    // Getting 3D to 2D projection transform..
+    let projectionTransform = proj4x4();
+
+    // Getting normalization transform matrix
+    let normalizationTransform = normalize4x4(xMin, xMax, yMin, yMax, -zMin, -zMax);
 
     // Refreshing render loop..
     setTimeout(function() {
