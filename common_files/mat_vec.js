@@ -175,7 +175,7 @@ function transpose(m) {
 //
 // computes the dot product between vectors u and v
 //
-function dot_product (u, v) {
+function dot_product(u, v) {
     if (u.length != v.length) {
         throw "dot_product(): vectors are not the same dimension";
     }

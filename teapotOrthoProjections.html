@@ -4,6 +4,27 @@
         <meta charset="UTF-8">
         <title>Teapot Orthographic Projections</title>
         
+        <style>
+            /* Custom canvas style */
+            canvas {
+                display: block;
+                margin-bottom: 10px;
+            }
+    
+            /* Fixing button container to line them up */
+            .button-container {
+                display: flex;
+                justify-content: flex-start;
+            }
+    
+            /* Giving buttons color as per video */
+            button {
+                border: 1px solid #ff8800;
+                background-color: lime;
+                padding: 21.45px;
+            }
+        </style>
+        
         <script type="text/javascript" src="./common_files/utils.js"></script>
         <script type="text/javascript" src="./common_files/mat_vec.js"></script>
         <script type="text/javascript" src="./common_files/xform2.js"></script>
@@ -50,6 +71,14 @@
     <body>
         <div style="float:left">
             <canvas id="gl-canvas" width="512" height="512"></canvas>
+            <button id="xPositive">+X</button>
+            <button id="xNegative">-X</button>
+            <button id="yPositive">+Y</button>
+            <button id="yNegative">-Y</button>
+            <button id="zPositive">+Z</button>
+            <button id="zNegative">-Z</button>
+            <button id="UL">UL</button>
+            <button id="UR">UR</button>
         </div>
     </body>
 </html>
